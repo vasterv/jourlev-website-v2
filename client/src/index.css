@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* JOURLEV Brand Colors - Black Theme */
+  --background: 0 0% 0%; /* Pure black */
+  --foreground: 0 0% 100%; /* Pure white */
+  --muted: 0 0% 8%; /* Very dark gray */
+  --muted-foreground: 0 0% 65%; /* Light gray */
+  --popover: 0 0% 0%;
+  --popover-foreground: 0 0% 100%;
+  --card: 0 0% 5%; /* Very dark card background */
+  --card-foreground: 0 0% 100%;
+  --border: 0 0% 15%; /* Dark border */
+  --input: 0 0% 10%; /* Dark input background */
+  --primary: 0 0% 100%; /* White text */
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 8%; /* Dark section background */
+  --secondary-foreground: 0 0% 100%;
+  --accent: 154 100% 39%; /* Kelly Green #00C66 */
+  --accent-foreground: 0 0% 0%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --ring: 142 76% 50%;
+  --radius: 0.75rem;
+  
+  /* Custom JOURLEV Variables */
+  --jourlev-green: 154 100% 39%;
+  --jourlev-orange: 25 100% 50%; /* Bright orange accent */
+  --jourlev-purple: 280 100% 70%; /* Purple accent */
+  --jourlev-yellow: 60 100% 50%; /* Yellow accent */
+  
+  /* Consistent Spacing System - Balanced like iCrossing */
+  --section-padding-y: 4rem; /* Vertical section padding */
+  --section-padding-y-lg: 5rem; /* Large screen vertical padding */
+  --content-gap: 2rem; /* Gap between content blocks */
+  --content-gap-lg: 2.5rem; /* Large gap between major sections */
+  --card-padding: 2rem; /* Standard card padding */
+  --card-gap: 1.5rem; /* Gap between cards */
+}
+
+.dark {
+  --background: 220 13% 9%;
+  --foreground: 0 0% 98%;
+  --muted: 220 13% 15%;
+  --muted-foreground: 220 9% 65%;
+  --popover: 220 13% 9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 220 13% 9%;
+  --card-foreground: 0 0% 98%;
+  --border: 220 13% 15%;
+  --input: 220 13% 15%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 220 13% 18%;
+  --secondary: 220 13% 15%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 142 76% 36%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 142 76% 36%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+    font-weight: 700;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+    font-weight: 700;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+    font-weight: 600;
+  }
+
+  .section-padding {
+    padding-top: var(--section-padding-y);
+    padding-bottom: var(--section-padding-y);
+  }
+  
+  .section-padding-lg {
+    padding-top: var(--section-padding-y-lg);
+    padding-bottom: var(--section-padding-y-lg);
+  }
+  
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding-top: var(--section-padding-y-lg);
+      padding-bottom: var(--section-padding-y-lg);
+    }
+  }
+}
+
+@layer components {
+  .gradient-bg {
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+  }
+  
+  .accent-gradient {
+    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(142 70% 45%) 100%);
+  }
+  
+  .colorful-gradient {
+    background: linear-gradient(135deg, 
+      hsl(var(--jourlev-green)) 0%, 
+      hsl(var(--jourlev-orange)) 25%, 
+      hsl(var(--jourlev-purple)) 50%, 
+      hsl(var(--jourlev-yellow)) 75%, 
+      hsl(var(--jourlev-green)) 100%);
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .content-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .prose-jourlev {
+    @apply max-w-none;
+  }
+  
+  .prose-jourlev p {
+    @apply text-muted-foreground leading-relaxed;
+  }
+  
+  .button-jourlev {
+    @apply inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 hover:scale-105;
+  }
+  
+  .card-jourlev {
+    @apply bg-card rounded-3xl border border-border hover:border-accent/30 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 transform hover:-translate-y-2;
+    padding: var(--card-padding);
+  }
+  
+  .section-dark {
+    @apply bg-muted/50 backdrop-blur-sm;
+  }
+  
+  .floating-element {
+    @apply absolute opacity-20 pointer-events-none;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  /* Content spacing utilities */
+  .content-gap {
+    gap: var(--content-gap);
+  }
+  
+  .content-gap-lg {
+    gap: var(--content-gap-lg);
+  }
+  
+  .cards-grid {
+    display: grid;
+    gap: var(--card-gap);
+  }
+  
+  @media (min-width: 640px) {
+    .cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .cards-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--content-gap);
+    }
+  }
+  
+  .glow-effect {
+    box-shadow: 0 0 20px hsl(var(--accent) / 0.3);
+  }
+
+  /* Team page mobile responsive fixes */
+  @media (max-width: 768px) {
+    .team-profile {
+      display: block !important;
+      width: 100% !important;
+      padding: 1rem !important;
+      text-align: left !important;
+      box-sizing: border-box;
+      flex-direction: column !important;
+    }
+
+    .team-profile * {
+      width: 100% !important;
+      max-width: 100% !important;
+      flex: none !important;
+      flex-basis: auto !important;
+    }
+
+    .team-profile img {
+      display: block;
+      margin: 0 auto 1rem auto;
+      max-width: 150px;
+      height: auto;
+    }
+
+    .team-profile h2,
+    .team-profile h3,
+    .team-profile p {
+      width: 100% !important;
+      font-size: 1rem !important;
+      line-height: 1.4 !important;
+      text-align: left !important;
+      max-width: none !important;
+    }
+
+    .team-profile .lg\:flex {
+      display: none !important;
+    }
+
+    .team-profile .lg\:hidden {
+      display: block !important;
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--accent) / 0.5);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  .font-body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  /* Mobile Team Page Fix */
+  @media (max-width: 1023px) {
+    .team-profile-container {
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+    }
+    
+    .team-profile-text {
+      width: 100% !important;
+      max-width: 100% !important;
+      text-align: left !important;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+    
+    .team-profile-text p {
+      width: 100% !important;
+      max-width: 100% !important;
+      text-align: left !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }
+}
